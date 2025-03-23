@@ -10,3 +10,7 @@ find ~ -type f -iname '* *' -printf "%T@:%p:%i\n" | sort -k 1nr -t ' ' | head -1
 #or
 
 find /home/pesho -iname "* *" -type f -printf "%p %T@" | sort -k2nr | head -n1 | awk '{print $1}' | xargs -I{} stat -c "%i" {}
+
+#or
+
+find ~/pesho -type f -printf '%i %n  %t\n' | grep -v ' 1 ' | sort -rn -k 3 | cut -d ' ' -f 1 | head -n 1
