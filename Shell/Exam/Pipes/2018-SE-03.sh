@@ -18,3 +18,7 @@
 
 cat /etc/passwd | sort -k3n -t ':' | head -n 201 | tail -n 1 | awk -F ':' '{print $4}' | xargs -I{} grep -F "{}" \
  /etc/passwd | awk -F ':' '{print $5 " " $6}' | tr ',' ' ' | awk '{print $1 " " $2 ":" $NF}'
+
+ #or
+
+ cat /etc/passwd | sed 's/^.//' | sort -k 1 -t ':' -n | cut -d ':' -f 5,6 | egrep '^.*,,,,SI.*$'
