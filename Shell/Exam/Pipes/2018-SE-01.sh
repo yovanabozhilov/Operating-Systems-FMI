@@ -2,4 +2,8 @@
 #директория, така че да станат такива, каквито биха се получили, ако ги бяхте създали с маска
 #0022.
 
+find ~ -type d -exec chmod g-w,o-w '{}' ';'
+# or
+find ~ -mindepth 1 -type d -exec chmod 0755 {}  ';'
+# or
 find ~ -type d | xargs -I{} chmod 755 {}
