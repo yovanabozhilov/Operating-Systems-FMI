@@ -19,4 +19,5 @@
 grep "/home/Inf" etc/passwd | cut -d ':' -f1,5 | cut -d ',' -f1 | grep "a$" | cut -c3,4 | sort -nr | uniq -c |  sort -nr | head -n 1
 #or
 cat passwd | egrep "/home/Inf/" | awk -F ':' '{print $1 " " $5}' | awk '{print $1 $3}' | egrep ".*a[,]{0,1}$" | sed -E 's/..(..).*/\1/g' | sort -n | uniq -c | sort -nr | head -n 1
-
+#or
+cut -d ':' -f 1,5 /etc/passwd | grep -E ',I$' | cut -d ',' -f 1 | grep 'а$' | cut -c 3-4 | sort -rn | uniq -c | head -n 1
